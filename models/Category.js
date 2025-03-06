@@ -2,7 +2,7 @@ require('dotenv').config();
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database'); // 引入数据库配置
 
-const User = sequelize.define('User', {
+const Category = sequelize.define('Category', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -34,7 +34,8 @@ const User = sequelize.define('User', {
         field: 'if_del',
     }
 }, {
-    timestamps: false // 不生成 createdAt 和 updatedAt 字段
+    timestamps: false, // 不生成 createdAt 和 updatedAt 字段
+	tableName: 'category'
 });
 
 module.exports = Category;

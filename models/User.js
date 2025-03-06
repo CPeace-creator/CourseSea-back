@@ -2,7 +2,7 @@ require('dotenv').config();
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database'); // 引入数据库配置
 
-const User = sequelize.define('User', {
+const User = sequelize.define('user', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -48,6 +48,7 @@ const User = sequelize.define('User', {
 }, {
   timestamps: false, // 不生成 createdAt 和 updatedAt 字段
   freezeTableName:true,//强制表名称等于模型名称
+  tableName: "user"
 });
 
 module.exports = User;

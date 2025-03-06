@@ -9,6 +9,7 @@ const mysql = require('mysql2');
 var indexRouter = require('./routes/index');
 require('dotenv').config();
 const usersRouter = require('./routes/users');
+const cateogyrRouter = require('./routes/category');
 const authMiddleware = require('./utils/authMiddleware');
 const { log } = require('console');
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', authMiddleware, usersRouter);
+app.use('/category', cateogyrRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

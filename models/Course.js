@@ -2,7 +2,7 @@ require('dotenv').config();
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database'); // 引入数据库配置
 
-const Course = sequelize.define('User', {
+const Course = sequelize.define('course', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -41,9 +41,19 @@ const Course = sequelize.define('User', {
 	avatar: {
 	  type: DataTypes.STRING,
 	  allowNull: true
-	}
+	},
+	userId: {
+	    type: DataTypes.INTEGER,
+	    defaultValue:0,
+		field:"user_id"
+	},
+	link: {
+	    type: DataTypes.STRING(255),
+	    allowNull: true
+	},
 }, {
-    timestamps: false // 不生成 createdAt 和 updatedAt 字段
+    timestamps: false, // 不生成 createdAt 和 updatedAt 字段
+    tableName: "course"
 });
 
 module.exports = Course;
