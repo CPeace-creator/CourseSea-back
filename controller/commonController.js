@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const ResponseResult = require('../utils/ResponseResult');
 const utils = require('../utils/utils');
+const getCourseByBiliBili = require('../utils/getCourseByBiliBili');
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const logger2 = require("../utils/logger");
@@ -40,3 +41,13 @@ exports.register = async (req, res) => {
         return ResponseResult.send(res, ResponseResult.error(500, error.message));
     }
 };
+exports.exportCourse=async (req,res)=>{
+    try{
+        const {url} =req.body
+        const {title,duration,link,description} = await getCourseByBiliBili.getBilibiliVideoInfo(url)
+        return ResponseResult.send(res, ResponseResult.success({title,duration,link,description}));
+    }catch(error){
+        logger2.error(`Error: ${error.message}\nStack: ${error.stack}`)
+        return ResponseResult.send(res, ResponseResult.error(500, error.message));
+    }
+}

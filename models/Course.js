@@ -51,6 +51,10 @@ const Course = sequelize.define('course', {
 	    type: DataTypes.STRING(255),
 	    allowNull: true
 	},
+    duration:{
+        type:DataTypes.DOUBLE(10),
+        allowNull:true
+    }
 }, {
     timestamps: false, // 不生成 createdAt 和 updatedAt 字段
     tableName: "course"
